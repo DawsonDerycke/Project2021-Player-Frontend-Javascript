@@ -3,9 +3,35 @@ list.classes = [];
 list.classeToRemove = null;
 list.init = async () => {
     list.classes = await list.getClasses();
+ /*   
+    list.fillSelectedNomClasse(list.classes);
+    list.fillSelectedSexe(list.classes);
+*/
     list.importClassesInTable(list.classes, true);
 };
 
+/*
+ <select id="nom_classe" name="nom_classe" class="form-control">
+              </select>
+list.fillSelectedNomClasse = (nomClasse) => {
+    const select = jQuery("#nom_classe");
+    select.append(
+        nomClasse.map((nomClasse) => {
+            return `<option value=${nomClasse.id}">${nomClasse.nom_classe}</option>`;
+        })
+    );
+};
+              <select id="sexe" name="sexe" class="form-control">
+              </select>
+list.fillSelectedSexe = (genre) => {
+    const select = jQuery("#sexe");
+    select.append(
+        genre.map((genre) => {
+            return `<option value=${genre.id}">${genre.sexe}</option>`;
+        })
+    );
+};
+*/
 list.getClasses = () => {
     return jQuery.ajax({
         url: "http://localhost:3001/index/classes",
@@ -26,7 +52,7 @@ list.remove = async () => {
     const classeId = list.classeToRemove;
     try {
         await jQuery.ajax({
-            url: `http://localhost:3001/index/classes${classeId}`,
+            url: `http://localhost:3001/index/classe/${classeId}`,
             method: "DELETE",
         });
         jQuery(`[data-id="${classeId}"]`).fadeOut('slow');
@@ -48,9 +74,13 @@ list.importClassesInTable = (classes, clear) => {
         classes.map((classe) => {
             return `
             <tr data-id="${classe.id}">
+                <td> ${classe.id_utilisateur} </td>
+                <td> ${classe.nom} </td>
+                <td> ${classe.prenom} </td>
+                <td> ${classe.age} </td>
                 <td> ${classe.id} </td>
-                <td> ${classe.pseudo} </td>
                 <td> ${classe.nom_classe} </td>
+                <td> ${classe.pseudo} </td>
                 <td> ${classe.niveau} </td>
                 <td> ${classe.sexe} </td>
                 <td> 
