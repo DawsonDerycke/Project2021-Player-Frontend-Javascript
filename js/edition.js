@@ -102,6 +102,7 @@ edition.save = async (event) => {
             list.init();
         } else {
             list.importClassesInTable([newClasse]);
+            list.classes.push(newClasse);
             list.init();
         }
         edition.hideForm();

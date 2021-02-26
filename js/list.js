@@ -3,35 +3,31 @@ list.classes = [];
 list.classeToRemove = null;
 list.init = async () => {
     list.classes = await list.getClasses();
- /*   
     list.fillSelectedNomClasse(list.classes);
     list.fillSelectedSexe(list.classes);
-*/
     list.importClassesInTable(list.classes, true);
 };
 
-/*
- <select id="nom_classe" name="nom_classe" class="form-control">
-              </select>
-list.fillSelectedNomClasse = (nomClasse) => {
+list.fillSelectedNomClasse = (clear) => {
     const select = jQuery("#nom_classe");
-    select.append(
-        nomClasse.map((nomClasse) => {
-            return `<option value=${nomClasse.id}">${nomClasse.nom_classe}</option>`;
-        })
+
+    select.find('option').remove().end().append(
+        `<option value"Archer"> Archer </option>`,
+        `<option value"Assassin"> Assassin </option>`,
+        `<option value"Berseker"> Berseker </option>`,
+        `<option value"Chevalier"> Chevalier </option>`,
+        `<option value"Soigneur"> Soigneur </option>`
     );
 };
-              <select id="sexe" name="sexe" class="form-control">
-              </select>
-list.fillSelectedSexe = (genre) => {
+
+list.fillSelectedSexe = () => {
     const select = jQuery("#sexe");
-    select.append(
-        genre.map((genre) => {
-            return `<option value=${genre.id}">${genre.sexe}</option>`;
-        })
+    select.find('option').remove().end().append(
+        `<option value="M"> M </option>`,
+        `<option value="F"> F </option>`
     );
 };
-*/
+
 list.getClasses = () => {
     return jQuery.ajax({
         url: "http://localhost:3001/index/classes",

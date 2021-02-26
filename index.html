@@ -23,27 +23,29 @@
     <div class="col-8 offset-2">
       <div class="card">
         <div class="card-header">
-          Ajout d'un véhicule
+          Ajout d'une classe
         </div>
         <div class="card-body">
           <form>
             <input type="hidden" name="id" id="id">
             <div class="form-group" id="div-pseudo">
-              <label for="pseudo"> pseudo </label>
+              <label for="pseudo"> Pseudonyme </label>
               <select id="pseudo" name="pseudo" class="form-control">
               </select>
             </div>
             <div class="form-group">
-              <label for="nom_classe"> nom_classe </label>
-              <input type="text" class="form-control" id="nom_classe" placeholder="lister">
+              <label for="nom_classe"> Classe </label>
+              <select id="nom_classe" name="nom_classe" class="form-control">
+              </select>
             </div>
             <div class="form-group">
-              <label for="niveau"> niveau </label>
-              <input type="text" class="form-control" id="niveau" placeholder="niveau = à 1">
+              <label for="niveau"> Niveau </label>
+              <input type="text" class="form-control" id="niveau" placeholder="Entre 1 et 100">
             </div>
             <div class="form-group">
-              <label for="sexe"> sexe </label>
-              <input type="text" class="form-control" id="sexe" placeholder="M ou F">
+              <label for="sexe"> Sexe </label>
+              <select id="sexe" name="sexe" class="form-control">
+              </select>
             </div>
             <div class="form-group" id="div-id_utilisateur">
               <label for="id_utilisateur"> id de l'utilisateur </label>
