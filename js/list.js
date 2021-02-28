@@ -3,12 +3,22 @@ list.classes = [];
 list.classeToRemove = null;
 list.init = async () => {
     list.classes = await list.getClasses();
+    list.fillSelectedIdUtilisateur(list.classes);
     list.fillSelectedNomClasse(list.classes);
     list.fillSelectedSexe(list.classes);
     list.importClassesInTable(list.classes, true);
 };
 
-list.fillSelectedNomClasse = (clear) => {
+list.fillSelectedIdUtilisateur = (users) => {
+    const select = jQuery("#id_utilisateur");
+    select.find('option').remove().end().append(
+        users.map((users) => {
+            return `<option value=${users.id_utilisateur}>${users.pseudo}</option>`;
+        })
+    );
+};
+
+list.fillSelectedNomClasse = () => {
     const select = jQuery("#nom_classe");
 
     select.find('option').remove().end().append(

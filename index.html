@@ -27,10 +27,10 @@
         </div>
         <div class="card-body">
           <form>
-            <input type="hidden" name="id" id="id">
-            <div class="form-group" id="div-pseudo">
-              <label for="pseudo"> Pseudonyme </label>
-              <select id="pseudo" name="pseudo" class="form-control">
+            <input type="hidden" name="id" id="id">           
+            <div class="form-group" id="div-id_utilisateur">
+              <label for="id_utilisateur"> Pseudonyme </label>
+              <select id="id_utilisateur" name="id_utilisateur" class="form-control">
               </select>
             </div>
             <div class="form-group">
@@ -46,10 +46,6 @@
               <label for="sexe"> Sexe </label>
               <select id="sexe" name="sexe" class="form-control">
               </select>
-            </div>
-            <div class="form-group" id="div-id_utilisateur">
-              <label for="id_utilisateur"> id de l'utilisateur </label>
-              <input type="text" class="form-control" id="id_utilisateur" placeholder="id de l'utilisateur">
             </div>
             <button type="submit" onclick="edition.save(event)" class="btn btn-primary"> Envoyer </button>
           </form>

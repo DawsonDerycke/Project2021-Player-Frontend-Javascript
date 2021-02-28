@@ -5,18 +5,7 @@ edition.buttonCancelEdit = jQuery('#button-cancel-edit');
 
 edition.init = async () => {
     edition.users = await edition.getUsers();
-    edition.fillSelectUsers(edition.users);
 };
-
-edition.fillSelectUsers = (users) => {
-    const select = jQuery("#pseudo");
-    select.append(
-        users.map((users) => {
-            return `<option value=${users.id}">${users.pseudo}</option> `;
-        })
-    );
-};
-
 
 edition.getUsers = () => {
     return jQuery.ajax({
@@ -47,8 +36,6 @@ edition.populate = (classeId) => {
         jQuery('#div-id_utilisateur').hide();
         jQuery('#id').val(classe.id);
         jQuery('#nom_classe').val(classe.nom_classe);
-        jQuery('#pseudo').val(classe.pseudo);
-        jQuery('#div-pseudo').hide();
         jQuery('#niveau').val(classe.niveau);
         jQuery('#sexe').val(classe.sexe);
     }
@@ -59,8 +46,6 @@ edition.cleanForm = () => {
     jQuery('#div-id_utilisateur').fadeIn('fast');
     jQuery('#id').val('');
     jQuery('#nom_classe').val('');
-    jQuery('#div-pseudo').fadeIn('fast');
-    jQuery('#pseudo').val('');
     jQuery('#niveau').val('');
     jQuery('#sexe').val('');
 };
@@ -78,7 +63,6 @@ edition.save = async (event) => {
     const id = jQuery('#id').val();
     const isEdition = id.length > 0;
     const nom_classe = jQuery('#nom_classe').val();
-    const pseudo = jQuery('#pseudo').val();
     const niveau = jQuery('#niveau').val();
     const sexe = jQuery('#sexe').val();
     let url = `http://localhost:3001/index/classe`;
@@ -93,7 +77,6 @@ edition.save = async (event) => {
             data: {
                 id_utilisateur,
                 nom_classe,
-                pseudo,
                 niveau,
                 sexe
             }
