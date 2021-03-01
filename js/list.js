@@ -3,7 +3,8 @@ list.classes = [];
 list.classeToRemove = null;
 list.init = async () => {
     list.classes = await list.getClasses();
-    list.fillSelectedIdUtilisateur(list.classes);
+    list.sansDoublon = await list.noDuplicate();
+    list.fillSelectedIdUtilisateur(list.sansDoublon);
     list.fillSelectedNomClasse(list.classes);
     list.fillSelectedSexe(list.classes);
     list.importClassesInTable(list.classes, true);
@@ -13,7 +14,7 @@ list.fillSelectedIdUtilisateur = (users) => {
     const select = jQuery("#id_utilisateur");
     select.find('option').remove().end().append(
         users.map((users) => {
-            return `<option value=${users.id_utilisateur}>${users.pseudo}</option>`;
+            return `<option value=${users.id}>${users.pseudo}</option>`;
         })
     );
 };
@@ -41,6 +42,17 @@ list.fillSelectedSexe = () => {
 list.getClasses = () => {
     return jQuery.ajax({
         url: "http://localhost:3001/index/classes",
+        method: "GET",
+
+    }).catch((error) => {
+        console.warn(error);
+        return [];
+    });
+};
+
+list.noDuplicate = () => {
+    return jQuery.ajax({
+        url: "http://localhost:3001/index/utilisateurs/noDuplicate",
         method: "GET",
 
     }).catch((error) => {
