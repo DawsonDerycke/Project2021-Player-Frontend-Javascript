@@ -9,25 +9,26 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body style="width: 98%;">
   <div class="row">
-    <div class="col-12">
-      <div class="text-right p-4">
-        <button class="btn btn-success" id="button-edit" onclick="edition.showForm()"> Ajouter </button>
+    <div class="col-8 offset-2">
+      <div class="text-right py-4">
+        <button class="btn btn-success" id="button-edit" onclick="edition.showForm()"> Ajouter une classe
+        </button>
         <button class="btn btn-danger" id="button-cancel-edit" onclick="edition.hideForm()"> Annuler </button>
       </div>
     </div>
   </div>
 
   <div class="row mb-4" id="container-form">
-    <div class="col-8 offset-2">
+    <div class="col-4 offset-4">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header text-white bg-dark font-weight-bold">
           Ajout d'une classe
         </div>
-        <div class="card-body">
+        <div class="card-body bg-info text-black font-weight-bold">
           <form>
-            <input type="hidden" name="id" id="id">           
+            <input type="hidden" name="id" id="id">
             <div class="form-group" id="div-id_utilisateur">
               <label for="id_utilisateur"> Pseudonyme </label>
               <select id="id_utilisateur" name="id_utilisateur" class="form-control">
@@ -47,7 +48,7 @@
               <select id="sexe" name="sexe" class="form-control">
               </select>
             </div>
-            <button type="submit" onclick="edition.save(event)" class="btn btn-primary"> Envoyer </button>
+            <button type="submit" onclick="edition.save(event)" class="btn btn-outline-dark"> Envoyer </button>
           </form>
         </div>
       </div>
@@ -55,8 +56,8 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <table id="list-classes" class="table">
-        <thead>
+      <table id="list-classes" class="table table-striped">
+        <thead class="thead-dark">
           <tr>
             <th> Id joueur </th>
             <th> Nom </th>
