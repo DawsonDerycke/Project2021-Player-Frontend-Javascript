@@ -21,32 +21,40 @@
   </div>
 
   <div class="row mb-4" id="container-form">
-    <div class="col-4 offset-4">
+    <div class="col-4 offset-4 font-weight-bold">
+      <div class="alert alert-danger" role="alert" id="error_add">
+      </div>
       <div class="card">
-        <div class="card-header text-white bg-dark font-weight-bold">
+        <div class="card-header text-white bg-dark">
           Ajout d'une classe
         </div>
-        <div class="card-body bg-info text-black font-weight-bold">
+        <div class="card-body bg-info text-black">
           <form>
             <input type="hidden" name="id" id="id">
             <div class="form-group" id="div-id_utilisateur">
               <label for="id_utilisateur"> Pseudonyme </label>
               <select id="id_utilisateur" name="id_utilisateur" class="form-control">
               </select>
+              <p class="py-1 pl-2 text-danger error-msg" id="id_utilisateur-required"> Ce champ est obligatoire. </p>
             </div>
             <div class="form-group">
               <label for="nom_classe"> Classe </label>
               <select id="nom_classe" name="nom_classe" class="form-control">
               </select>
+              <p class="py-1 pl-2 text-danger error-msg" id="nom_classe-required"> Ce champ est obligatoire. </p>
             </div>
             <div class="form-group">
               <label for="niveau"> Niveau </label>
               <input type="text" class="form-control" id="niveau" placeholder="Entre 1 et 100">
+              <p class="py-1 pl-2 text-danger error-msg" id="niveau-required"> Ce champ est obligatoire. </p>
+              <p class="py-1 pl-2 text-danger error-msg" id="niveau-number"> Ce champ doit être numérique. </p>
+              <p class="py-1 pl-2 text-danger error-msg" id="niveau-between"> Votre niveau se situe entre 1 et 100. </p>
             </div>
             <div class="form-group">
               <label for="sexe"> Sexe </label>
               <select id="sexe" name="sexe" class="form-control">
               </select>
+              <p class="py-1 pl-2 text-danger error-msg" id="sexe-required"> Ce champ est obligatoire. </p>
             </div>
             <button type="submit" onclick="edition.save(event)" class="btn btn-outline-dark"> Envoyer </button>
           </form>

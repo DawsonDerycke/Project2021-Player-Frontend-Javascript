@@ -64,7 +64,7 @@ list.noDuplicate = () => {
 list.confirmRemove = (classeId) => {
     list.classeToRemove = classeId;
     jQuery("#remove-line-modal").modal("toggle");
-}
+};
 
 list.remove = async () => {
     const classeId = list.classeToRemove;
