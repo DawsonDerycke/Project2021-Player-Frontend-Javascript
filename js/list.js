@@ -3,12 +3,23 @@ list.classes = [];
 list.classeToRemove = null;
 list.init = async () => {
     list.classes = await list.getClasses();
+    list.sansDoublon = await list.noDuplicate();
+    list.fillSelectedIdUtilisateur(list.sansDoublon);
     list.fillSelectedNomClasse(list.classes);
     list.fillSelectedSexe(list.classes);
     list.importClassesInTable(list.classes, true);
 };
 
-list.fillSelectedNomClasse = (clear) => {
+list.fillSelectedIdUtilisateur = (users) => {
+    const select = jQuery("#id_utilisateur");
+    select.find('option').remove().end().append(
+        users.map((users) => {
+            return `<option value=${users.id}>${users.pseudo}</option>`;
+        })
+    );
+};
+
+list.fillSelectedNomClasse = () => {
     const select = jQuery("#nom_classe");
 
     select.find('option').remove().end().append(
@@ -39,10 +50,21 @@ list.getClasses = () => {
     });
 };
 
+list.noDuplicate = () => {
+    return jQuery.ajax({
+        url: "http://localhost:3001/index/utilisateurs/noDuplicate",
+        method: "GET",
+
+    }).catch((error) => {
+        console.warn(error);
+        return [];
+    });
+};
+
 list.confirmRemove = (classeId) => {
     list.classeToRemove = classeId;
     jQuery("#remove-line-modal").modal("toggle");
-}
+};
 
 list.remove = async () => {
     const classeId = list.classeToRemove;

@@ -2,3 +2,8 @@
 #container-form {
     display: none;
 }
+
+#error_add, .error-msg {
+    display: none;
+    font-size: smaller;
+}
