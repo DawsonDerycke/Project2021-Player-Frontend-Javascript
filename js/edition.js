@@ -9,7 +9,7 @@ edition.init = async () => {
 
 edition.getUsers = () => {
     return jQuery.ajax({
-        url: "http://localhost:3001/index/utilisateurs",
+        url: "https://projet-api.herokuapp.com/index/utilisateurs",
         method: "GET",
 
     }).catch((error) => {
@@ -106,7 +106,7 @@ edition.save = async (event) => {
     const nom_classe = jQuery('#nom_classe').val();
     const niveau = jQuery('#niveau').val();
     const sexe = jQuery('#sexe').val();
-    let url = `http://localhost:3001/index/classe`;
+    let url = `https://projet-api.herokuapp.com/index/classe`;
     if (isEdition) {
         url += `/${id}`;
     }

@@ -41,7 +41,7 @@ list.fillSelectedSexe = () => {
 
 list.getClasses = () => {
     return jQuery.ajax({
-        url: "http://localhost:3001/index/classes",
+        url: "https://projet-api.herokuapp.com/index/classes",
         method: "GET",
 
     }).catch((error) => {
@@ -52,7 +52,7 @@ list.getClasses = () => {
 
 list.noDuplicate = () => {
     return jQuery.ajax({
-        url: "http://localhost:3001/index/utilisateurs/noDuplicate",
+        url: "https://projet-api.herokuapp.com/index/utilisateurs/noDuplicate",
         method: "GET",
 
     }).catch((error) => {
@@ -70,7 +70,7 @@ list.remove = async () => {
     const classeId = list.classeToRemove;
     try {
         await jQuery.ajax({
-            url: `http://localhost:3001/index/classe/${classeId}`,
+            url: `https://projet-api.herokuapp.com/index/classe/${classeId}`,
             method: "DELETE",
         });
         jQuery(`[data-id="${classeId}"]`).fadeOut('slow');
